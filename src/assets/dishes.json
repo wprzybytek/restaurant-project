@@ -1,0 +1,333 @@
+{
+  "dishes": [
+    {
+      "id": 1,
+      "rating": 111,
+      "reviews": 23,
+      "name": "poutine",
+      "cuisine": "canadian",
+      "category": "pork",
+      "products": [
+        "potatoes",
+        "becon",
+        "cheese"
+      ],
+      "quantity": 10,
+      "price": 5,
+      "description": " Dish made of french fries and cheese curds topped with brown gravy.",
+      "images": "assets/images/poutine"
+    },
+    {
+      "id": 2,
+      "rating": 138,
+      "reviews": 31,
+      "name": "kebap",
+      "cuisine": "turkish",
+      "category": "mutton",
+      "products": [
+        "mutton",
+        "tomatoes",
+        "cucumber",
+        " onion",
+        "bread"
+      ],
+      "quantity": "12",
+      "price": "4",
+      "description": "Dish consists of cut up or ground meat, sometimes with vegetables, and various other accompaniments",
+      "images": "assets/images/kebap"
+    },
+    {
+      "id": 3,
+      "rating": 55,
+      "reviews": 12,
+      "name": "tteokbokki",
+      "cuisine": "korean",
+      "category": "vegan",
+      "products": [
+        "rice cake",
+        "fish cake",
+        "gochujang",
+        "scallion"
+      ],
+      "quantity": "7",
+      "price": "5",
+      "description": "Tteokbokki is a spicy stir-fried dish that usually consists of cylinder-shaped rice cakes, sweet red chili sauce, and fish cakes.",
+      "images": "assets/images/tteokbokki"
+    },
+    {
+      "id": 4,
+      "rating": 290,
+      "reviews": 59,
+      "name": "mapo tofu",
+      "cuisine": "chinese",
+      "category": "beef",
+      "products": [
+        "beef",
+        "tofu",
+        "pepper",
+        "garlic",
+        "ginger",
+        "scallion",
+        "rice"
+      ],
+      "quantity": "4",
+      "price": "10",
+      "description": "Dish that consists of small tofu cubes braised in a spicy chili bean paste-based sauce and minced meat. Served with rice.",
+      "images": "assets/images/mapotofu"
+    },
+    {
+      "id": 5,
+      "rating": 50,
+      "reviews": 11,
+      "name": "kimchi jigae",
+      "cuisine": "korean",
+      "category": "pork",
+      "products": [
+        "pork",
+        "kimchi",
+        "fish cake",
+        "onion",
+        "scallion"
+      ],
+      "quantity": "12",
+      "price": "10",
+      "description": "Kimchi-jigae or kimchi stew is a stew-like Korean dish, made with kimchi and other ingredients, such as por, scallions, onions, and diced fish cakes.",
+      "images": "assets/images/kimchijigae"
+    },
+    {
+      "id": 6,
+      "rating": 45,
+      "reviews": 10,
+      "name": "takoyaki",
+      "cuisine": "japanese",
+      "category": "octopus",
+      "products": [
+        "octopus",
+        "scallion",
+        "ginger"
+      ],
+      "quantity": "10",
+      "price": "4",
+      "description": "Takoyaki is a ball-shaped Japanese snack made of a wheat flour-based batter and cooked in a special molded pan. It is typically filled with minced or diced octopus, tempura scraps, pickled ginger, and green onion. ",
+      "images": "assets/images/takoyaki"
+    },
+    {
+      "id": 7,
+      "rating": 50,
+      "reviews": 11,
+      "name": "shoyu ramen",
+      "cuisine": "japanese",
+      "category": "pork",
+      "products": [
+        "pork",
+        "egg",
+        "noodles",
+        "scallions",
+        "mushroom",
+        "scallion"
+      ],
+      "quantity": "15",
+      "price": "15",
+      "description": "Shoyu ramen is a ramen noodle dish flavored with shoyu, the Japanese word for soy sauce. The toppings include: pork, soft-boiled egg, shitake mushrooms and scallions.",
+      "images": "assets/images/shoyuramen"
+    },
+    {
+      "id": 8,
+      "rating": 50,
+      "reviews": 11,
+      "name": "gyoza",
+      "cuisine": "japanese",
+      "category": "pork",
+      "products": [
+        "pork"
+      ],
+      "quantity": "8",
+      "price": "6",
+      "description": "Japanese pan-fried dumpling with a pork filling.",
+      "images": "assets/images/gyoza"
+    },
+    {
+      "id": 9,
+      "rating": 48,
+      "reviews": 11,
+      "name": "baozi",
+      "cuisine": "chinese",
+      "category": "pork",
+      "products": [
+        "pork",
+        "scallion"
+      ],
+      "quantity": "10",
+      "price": "8",
+      "description": "Baozi are chinese steamed buns filled with pork and scallions.",
+      "images": "assets/images/baozi"
+    },
+    {
+      "id": 10,
+      "rating": 45,
+      "reviews": 10,
+      "name": "banh mi",
+      "cuisine": "vietnamese",
+      "category": "beef",
+      "products": [
+        "beef",
+        "carrot",
+        "onion",
+        "cilantro",
+        "bread",
+        "tomatoes",
+        "chilli"
+      ],
+      "quantity": "21",
+      "price": "9",
+      "description": "Banh mi is a short baguette split lenghtwise and filled with beef, cilantro, carrots, chilli and tomatoes.",
+      "images": "assets/images/banhmi"
+    },
+    {
+      "id": 11,
+      "rating": 45,
+      "reviews": 10,
+      "name": "pho",
+      "cuisine": "vietnamese",
+      "category": "beef",
+      "products": [
+        "beef",
+        "noodles",
+        "cilantro",
+        "chilli"
+      ],
+      "quantity": "13",
+      "price": "15",
+      "description": " Pho is a Vietnamese soup dish consisting of broth, rice noodles, herbs, and meat.",
+      "images": "assets/images/pho"
+    },
+    {
+      "id": 12,
+      "rating": 45,
+      "reviews": 10,
+      "name": "pad thai",
+      "cuisine": "thai",
+      "category": "shrimp",
+      "products": [
+        "shrimp",
+        "noodles",
+        "rice",
+        "egg",
+        "scallion",
+        "carrot",
+        "pepper",
+        "cilantro"
+      ],
+      "quantity": "6",
+      "price": "10",
+      "description": "Pad thai is a stir-fried rice noodle dish. It is typically made with rice noodles, shrimp, a scrambled egg, and vegetables. ",
+      "images": "assets/images/padthai"
+    },
+    {
+      "id": 13,
+      "rating": 45,
+      "reviews": 10,
+      "name": "pierogi",
+      "cuisine": "polish",
+      "category": "vegetarian",
+      "products": [
+        "potatoes",
+        "cheese"
+      ],
+      "quantity": "10",
+      "price": "5",
+      "description": "Half-circular dumplings, usually made from flour, bolied in salted wated. Filled with potatoes and white cheese.",
+      "images": "assets/images/pierogi"
+    },
+    {
+      "id": 14,
+      "rating": 45,
+      "reviews": 10,
+      "name": "nasi goreng",
+      "cuisine": "indonesian",
+      "category": "mutton",
+      "products": [
+        "mutton",
+        "rice",
+        "chilli",
+        "garlic",
+        "carrot",
+        "egg"
+      ],
+      "quantity": "11",
+      "price": "8",
+      "description": "Nasi goreng is a fried rice dish, usually cooked with pieces of meat and vegetables.",
+      "images": "assets/images/nasigoreng"
+    },
+    {
+      "id": 15,
+      "rating": 50,
+      "reviews": 11,
+      "name": "chilli crab",
+      "cuisine": "singaporean",
+      "category": "crab",
+      "products": [
+        "crab",
+        "chilli",
+        "tomatoes"
+      ],
+      "quantity": 3,
+      "price": "20",
+      "description": "Crab stir-fried in a semi-thick sweet and savory tomato and chilli sauce. ",
+      "images": "assets/images/chillicrab"
+    },
+    {
+      "id": 16,
+      "rating": 45,
+      "reviews": 10,
+      "name": "currywurst",
+      "cuisine": "german",
+      "category": "pork",
+      "products": [
+        "pork",
+        "potatoes"
+      ],
+      "quantity": "20",
+      "price": "5",
+      "description": "Currywurst is a dish of German origin consisting of steamed, and fried pork sausage, seasoned with curry ketchup and served with fries.",
+      "images": "assets/images/currywurst"
+    },
+    {
+      "id": 17,
+      "rating": 77,
+      "reviews": 19,
+      "name": "tacos",
+      "cuisine": "mexican",
+      "category": "beef",
+      "products": [
+        "beef",
+        "cilantro",
+        "tomatoes",
+        "onion",
+        "chilli"
+      ],
+      "quantity": "6",
+      "price": "12",
+      "description": "A taco is a traditional Mexican dish consisting of a small hand-sized corn tortilla topped with a filling.",
+      "images": "assets/images/tacos"
+    },
+    {
+      "id": 18,
+      "rating": 53,
+      "reviews": 12,
+      "name": "chilli con carne",
+      "cuisine": "mexican",
+      "category": "beef",
+      "products": [
+        "beef",
+        "chilli",
+        "beans",
+        "tomatoes"
+      ],
+      "quantity": "8",
+      "price": "8",
+      "description": "Chili con carne is a spicy stew containing chili peppers, meat, tomatoes and kidney beans.",
+      "images": "assets/images/chilliconcarne"
+    }
+  ]
+}

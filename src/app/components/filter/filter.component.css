@@ -1,0 +1,63 @@
+.filter-main {
+  width: available;
+  margin: 1rem;
+  padding: 1rem;
+  border: 5px solid #009dff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-select {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.filter-title {
+  font-size: 1rem;
+}
+
+#filter-cuisine input{
+  display: none;
+}
+#filter-cuisine input:checked ~ label {
+  text-decoration: underline;
+}
+
+#filter-rating{
+  font-size: 1.5rem;
+}
+#filter-rating label {
+  margin-left: 1rem;
+  color: gold;
+}
+#filter-rating input{
+  display: none;
+}
+#filter-rating input:checked ~ label {
+  text-decoration: underline black;
+}
+
+#filter-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#filter-price input{
+  display: none;
+}
+#filter-price input:checked ~label {
+  text-decoration: underline black;
+}
+.filter-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#filter-category input{
+  display: none;
+}
+#filter-category input:checked ~ label {
+  text-decoration: underline;
+}

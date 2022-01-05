@@ -1,0 +1,37 @@
+<div class="filter-main">
+
+  <div class="filter-select" id="filter-cuisine">
+    <h2 class="filter-title">Cuisine:</h2>
+    <div *ngFor="let cuisine of (dishList | unique:'cuisine')">
+      <input type="checkbox" id="{{cuisine}}">
+      <label (click)="cuisineCheck(cuisine)" for="{{cuisine}}">{{cuisine}}</label>
+    </div>
+  </div>
+
+  <div class="filter-select" id="filter-price">
+    <h2 class="filter-title">Price:</h2>
+    <div *ngFor="let price of getPrices()">
+      <input type="checkbox" id="{{price}}">
+      <label (click)="priceCheck(price)" for="{{price}}">{{price}}</label>
+    </div>
+  </div>
+
+  <div class="filter-select" id="filter-rating">
+    <h2 class="filter-title">Rating:</h2>
+    <div class="filter-rating">
+      <div *ngFor="let rating of (dishList | unique:'rating')">
+        <input type="checkbox" id="filter-{{rating}}">
+        <label (click)="selectRating(rating)" for="filter-{{rating}}">{{rating}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-select" id="filter-category">
+    <h2 class="filter-title">Category:</h2>
+    <div *ngFor="let category of (dishList | unique:'category')">
+      <input type="checkbox" id="{{category}}">
+      <label (click)="categoryCheck(category)" for="{{category}}">{{category}}</label>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+.rating {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3rem;
+  transform: rotateY(180deg);
+}
+.rating input {
+  display: none;
+}
+.rating label {
+  position: relative;
+}
+.rating label:after {
+  content: "*";
+  color: gold;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after{
+  opacity: 1;
+}

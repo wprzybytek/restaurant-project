@@ -1,0 +1,36 @@
+<form class="dish-form" (ngSubmit)="onSubmit()">
+  <h1 class="form-title">Add dish</h1>
+  <div class="form-field">
+    <label for="name">Dish Name</label>
+    <input type="text" name="name" [(ngModel)]="name" id="name">
+  </div>
+  <div class="form-field">
+    <label for="cuisine">Cuisine</label>
+    <input type="text" name="cuisine" [(ngModel)]="cuisine" id="cuisine">
+  </div>
+  <div class="form-field">
+    <label for="category">Category</label>
+    <input type="text" name="category" [(ngModel)]="category" id="category">
+  </div>
+  <div class="form-field">
+    <label for="products">Ingredients</label>
+    <input type="text" name="products" [(ngModel)]="products" id="products">
+  </div>
+  <div class="form-field">
+    <label for="quantity">Quantity</label>
+    <input type="text" name="quantity" [(ngModel)]="quantity" id="quantity">
+  </div>
+  <div class="form-field">
+    <label for="price">Price in €</label>
+    <input type="text" name="price" [(ngModel)]="price" id="price">
+  </div>
+  <div class="form-field">
+    <label for="description">Description</label>
+    <input type="text" name="description" [(ngModel)]="description" id="description">
+  </div>
+  <div class="form-field">
+    <label for="images">Path to images</label>
+    <input type="text" name="images" [(ngModel)]="images" id="images">
+  </div>
+  <input type="submit" value="Add Dish" class="add-dish-btn">
+</form>

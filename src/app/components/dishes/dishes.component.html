@@ -1,0 +1,33 @@
+<div class="container">
+  <button (click)="changeCurrency()" class="currency-button">Currency: {{currency}}</button>
+
+  <app-filter [style.width]="'100%'" [dishList]="dishList" (onFilter)="setFilters($event)"></app-filter>
+
+  <div *ngFor="let dish of (dishList | dishPipe:filterValues[0]:filterValues[1]:filterValues[2]:filterValues[3])"
+       class="dish-card"
+       [style.border-color]="(dish.price == getMaxPrice())? 'red' : (dish.price == getMinPrice())? 'green' : '#009dff'"
+       id="{{(dish.name).split(' ').join('-')}}">
+    <button class="delete" (click)="deleteDish(dish)">x</button>
+    <img class="dish-img" src="{{dish.images}}/main.jpg" alt="{{dish.name}}">
+    <p class="dish-name">{{ dish.name | uppercase }}</p>
+    <p class="dish-cuisine">{{dish.cuisine | uppercase}}</p>
+    <div class="dish-info">
+      <p class="dish-quantity" [style.color]="(dish.quantity <= 3)? 'red' : 'black'">
+        Available: {{dish.quantity}}
+      </p>
+      <p class="dish-price">
+        Price: {{dish.price}}{{currency}}
+      </p>
+    </div>
+    <div class="dish-buttons">
+      <button class="add" (click)="addToBasket(dish)">+</button>
+      <button class="remove" (click)="removeFromBasket(dish)" disabled="disabled">-</button>
+    </div>
+    <div class="dish-rating">
+      <p [style.color]="(dish.rating>=3)? 'green' : 'red'">Rating: {{getRating(dish)}}</p>
+      <app-rating [dish]="dish" (onRated)="setRating($event)"></app-rating>
+    </div>
+  </div>
+
+  <app-add-dish [style.width]="'100%'" (onAddDish)="addDish($event)"></app-add-dish>
+</div>

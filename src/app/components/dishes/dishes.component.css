@@ -1,0 +1,97 @@
+.basket {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+}
+
+.currency-button {
+  border: none;
+  background-color: green;
+  color: white;
+  width: 7rem;
+  height: 2rem;
+}
+
+.container{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dish-card {
+  width: 20rem;
+  border: 5px solid #009dff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.5rem;
+  margin: 0.5rem;
+}
+
+.delete {
+  border: none;
+  color: white;
+  width: 10%;
+  height: 3vh;
+  margin: 1vw;
+  background-color: red;
+  align-self: flex-end;
+}
+
+.dish-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.dish-name {
+  margin: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.dish-cuisine {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.dish-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.dish-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.dish-buttons button {
+  border: none;
+  color: white;
+  width: 10%;
+  height: 3vh;
+  margin: 1vw;
+}
+.dish-buttons button:disabled {
+  background-color: grey;
+}
+.add {
+  background-color: green;
+}
+.remove {
+  background-color: red;
+}
+.dish-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
