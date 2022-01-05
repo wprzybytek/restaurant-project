@@ -12,6 +12,7 @@ import { DishPipePipe } from './pipes/dish-pipe.pipe';
 import { FilterComponent } from './components/filter/filter.component';
 import { UniquePipe } from './pipes/unique.pipe';
 import { BasketComponent } from './components/basket/basket.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BasketComponent } from './components/basket/basket.component';
     FilterComponent,
     UniquePipe,
     BasketComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
