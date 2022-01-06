@@ -1,12 +1,13 @@
-<div class="basket-main" [style.background-color]="(getPortions() > 10)? '#009dff' : 'orange'">
+<div class="basket-main">
   <div class="basket-products">
-    Portions: {{getPortions()}}
-  </div>
-  <div class="basket-price">
-    Price: {{getPrice()}}{{getCurrency()}}
+    <p>Portions: {{this.basketService.getPortions()}}</p>
+    <p>Price: {{this.basketService.getPrice()}}{{this.currencyService.getCurrency()}}</p>
   </div>
   <div class="basket-details">
-    Details:
-    <p *ngFor="let dish of this.basketItems | keyvalue">- [{{dish.value}}] {{dish.key.name}} {{dish.key.price}}{{getCurrency()}}</p>
+    <p [style.font-size]="'2rem'">Details:</p>
+    <div class="basket-item" *ngFor="let dish of this.basketItems | keyvalue">
+      <img src="{{dish.key.images}}/main.jpg">
+      <p>[{{dish.value}}] {{dish.key.name}} {{dish.key.price}}{{getCurrency()}}</p>
+    </div>
   </div>
 </div>

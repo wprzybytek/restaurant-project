@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BasketService} from "../../services/basket.service";
 import {Dish} from "../../dish";
+import {CurrencyService} from "../../services/currency.service";
 
 @Component({
   selector: 'app-basket',
@@ -10,29 +11,13 @@ import {Dish} from "../../dish";
 export class BasketComponent implements OnInit {
   basketItems!: Map<Dish, number>
 
-  constructor(private basketService: BasketService) { }
+  constructor(public basketService: BasketService, public currencyService: CurrencyService) { }
 
   ngOnInit(): void {
     this.basketItems = this.basketService.getBasketItems()
   }
 
-  getPortions(): number {
-    let portions = 0
-    for(let [key, value] of this.basketItems.entries()) {
-      portions += value
-    }
-    return portions
-  }
-
-  getPrice(): number {
-    let price = 0
-    for(let [key, value] of this.basketItems.entries()) {
-      price += value * key.price
-    }
-    return Math.round(price * 100)/100
-  }
-
   getCurrency():string {
-    return this.basketService.getCurrency()
+    return this.currencyService.getCurrency()
   }
 }

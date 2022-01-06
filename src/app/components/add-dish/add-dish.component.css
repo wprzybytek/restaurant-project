@@ -1,13 +1,20 @@
+.form-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .dish-form {
-  border: 5px solid #009dff;
-  border-radius: 10px;
   padding: 0.5rem;
-  margin: 1rem;
   wrap-option: none;
+  min-height: 80vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
 }
-.form-title {
-  margin-bottom: 0.5rem;
-}
+
 .form-field {
   display: flex;
   flex-direction: column;

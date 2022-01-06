@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Dish} from "../../dish";
+import {DishService} from "../../services/dish.service";
 
 @Component({
   selector: 'app-add-dish',
@@ -7,7 +8,20 @@ import {Dish} from "../../dish";
   styleUrls: ['./add-dish.component.css']
 })
 export class AddDishComponent implements OnInit {
-  @Output() onAddDish: EventEmitter<Dish> = new EventEmitter()
+  get dishList() {
+    return this.dishService.dishes
+  }
+  set dishList(dishes) {
+    this.dishService.dishes = dishes
+  }
+
+  get dishListCopy() {
+    return this.dishService.dishesCopy
+  }
+  set dishListCopy(dishes) {
+    this.dishService.dishesCopy = dishes
+  }
+
   name!: string
   cuisine!: string
   category!: string
@@ -17,7 +31,7 @@ export class AddDishComponent implements OnInit {
   description!: string
   images!: string
 
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +42,7 @@ export class AddDishComponent implements OnInit {
       return;
     }
 
-    let newDish: object
+    let newDish: Dish
     try {
       newDish = {
         name: this.name,
@@ -42,7 +56,10 @@ export class AddDishComponent implements OnInit {
         rating: 0,
         reviews: 0
       }
-      this.onAddDish.emit((newDish as Dish))
+      this.dishService.addDish(newDish).subscribe(dish => {
+        this.dishList.push(dish)
+        this.dishListCopy.push(dish)
+      })
     }
     catch (error) {
       alert("Wrong data format!")

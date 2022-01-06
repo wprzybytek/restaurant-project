@@ -1,5 +1,9 @@
 <div class="container">
-  <button (click)="changeCurrency()" class="currency-button">Currency: {{currency}}</button>
+  <div class="basket" [style.background-color]="(this.basketService.getPortions() > 10)? '#009dff' : 'orange'">
+    <p>Portions: {{this.basketService.getPortions()}}</p>
+    <p>Price: {{this.basketService.getPrice()}}{{this.currencyService.getCurrency()}}</p>
+    <button (click)="changeCurrency()" class="currency-button">Currency: {{currency}}</button>
+  </div>
 
   <app-filter [style.width]="'100%'" [dishList]="dishList" (onFilter)="setFilters($event)"></app-filter>
 
@@ -20,14 +24,12 @@
       </p>
     </div>
     <div class="dish-buttons">
-      <button class="add" (click)="addToBasket(dish)">+</button>
-      <button class="remove" (click)="removeFromBasket(dish)" disabled="disabled">-</button>
+      <button class="add" (click)="addToBasket(dish)" [disabled]="hideAddButton(dish)">+</button>
+      <button class="remove" (click)="removeFromBasket(dish)" [disabled]="hideRemoveButton(dish)">-</button>
     </div>
     <div class="dish-rating">
       <p [style.color]="(dish.rating>=3)? 'green' : 'red'">Rating: {{getRating(dish)}}</p>
       <app-rating [dish]="dish" (onRated)="setRating($event)"></app-rating>
     </div>
   </div>
-
-  <app-add-dish [style.width]="'100%'" (onAddDish)="addDish($event)"></app-add-dish>
 </div>

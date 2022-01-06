@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
 import {Dish} from "src/app/dish"
 import {DishService} from "../../services/dish.service";
 import {CurrencyService} from "../../services/currency.service";
@@ -10,23 +10,34 @@ import {BasketService} from "../../services/basket.service";
   styleUrls: ['./dishes.component.css']
 })
 export class DishesComponent implements OnInit {
-  dishList: Dish[] = []
-  dishListCopy: Dish[] = []
+  get dishList() {
+    return this.dishService.dishes
+  }
+  set dishList(dishes) {
+    this.dishService.dishes = dishes
+  }
+
+  get dishListCopy() {
+    return this.dishService.dishesCopy
+  }
+  set dishListCopy(dishes) {
+    this.dishService.dishesCopy = dishes
+  }
+
   currency: string = "€"
-  USDRatio: number = 0
   filterValues: any = [[], [], 0, []]
 
-  constructor(private dishService: DishService, private currencyService: CurrencyService, private basketService: BasketService) {
+  constructor(private dishService: DishService, public currencyService: CurrencyService, public basketService: BasketService) {
   }
 
   ngOnInit(): void {
-    this.dishService.getDishes().subscribe((data) => {
+    this.dishService.getDishes().subscribe(data => {
       this.dishList = data
-      this.dishListCopy = JSON.parse(JSON.stringify(data))
     })
-    this.currencyService.getExchangeRates().subscribe((data) => {
-      this.USDRatio = (data as any).data.USD
+    this.dishService.getDishesCopy().subscribe(data => {
+      this.dishListCopy = data
     })
+    this.currency = this.currencyService.getCurrency()
   }
 
   getMaxPrice(): number {
@@ -50,63 +61,37 @@ export class DishesComponent implements OnInit {
   }
 
   changeCurrency():void {
-    if(this.currency == '€') {
-      this.currency = '$'
-      this.dishList.forEach(dish => {dish.price = Number((dish.price * this.USDRatio).toFixed(2))})
-    }
-    else {
-      this.currency = '€'
-      this.dishList.forEach(dish => {dish.price = this.dishListCopy.filter(entry => {
-        return entry.name == dish.name
-      })[0].price})
-    }
-    this.basketService.setCurrency(this.currency)
+    this.currencyService.changeCurrency()
+    this.dishService.changeCurrency()
+    this.currency = this.currencyService.getCurrency()
   }
 
   addToBasket(dish: Dish): void {
-    dish.quantity -= 1
+    this.dishService.removeOne(dish)
     this.basketService.addToBasket(dish)
-    this.checkButtonStatus(dish)
   }
 
   removeFromBasket(dish: Dish): void {
-    dish.quantity += 1
+    this.dishService.addOne(dish)
     this.basketService.removeFromBasket(dish)
-    this.checkButtonStatus(dish)
   }
 
-  checkButtonStatus(dish: Dish): void {
-    let addButton = document.querySelector(`#${(dish.name).split(' ').join('-')} .add`)
-    let removeButton = document.querySelector(`#${(dish.name).split(' ').join('-')} .remove`)
-    if (this.dishListCopy.filter(entry => {
+  hideRemoveButton(dish: Dish): boolean {
+    return this.dishListCopy.filter(entry => {
       return entry.name == dish.name
-    })[0].quantity == dish.quantity) {
-      (removeButton as Element).setAttribute('disabled', 'disabled')
-    } else if ((removeButton as Element).hasAttribute('disabled')) {
-      (removeButton as Element).removeAttribute('disabled')
-    }
-    else if (dish.quantity == 0) {
-      (addButton as Element).setAttribute('disabled', 'disabled')
-    } else if ((addButton as Element).hasAttribute('disabled')) {
-      (addButton as Element).removeAttribute('disabled')
-    }
+    })[0].quantity == dish.quantity
+  }
+
+  hideAddButton(dish: Dish): boolean {
+    return dish.quantity == 0
   }
 
   deleteDish(dish: Dish) {
-    this.dishService
-      .deleteDish(dish)
-      .subscribe(() => this.dishList = this.dishList.filter(entry => entry.id != dish.id))
-    this.basketService.removeAll(dish)
-  }
-
-  addDish(dish: Dish) {
-    this.dishService.addDish(dish).subscribe((dish) => {
-      this.dishList.push(dish)
-    })
+    this.dishService.deleteDish(dish)
   }
 
   setRating(dish: Dish) {
-    this.dishService.setRating(dish).subscribe()
+    this.dishService.setRating(dish)
   }
 
   setFilters(values: any) {

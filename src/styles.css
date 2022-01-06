@@ -6,3 +6,25 @@
 body {
   overflow-x: hidden;
 }
+
+@media (max-width: 800px) {
+  header {
+    padding: 1rem;
+    font-size: 10px;
+  }
+
+  .filter-main {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    padding: 0.5rem;
+    font-size: 8px;
+  }
+
+  .filter-main {
+    font-size: 10px;
+  }
+}

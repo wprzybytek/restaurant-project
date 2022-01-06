@@ -1,5 +1,5 @@
 export interface Dish {
-  "id": number,
+  "id"?: number,
   "rating": number,
   "reviews": number,
   "name": string,

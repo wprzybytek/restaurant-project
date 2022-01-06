@@ -2,8 +2,8 @@
   "dishes": [
     {
       "id": 1,
-      "rating": 111,
-      "reviews": 23,
+      "rating": 116,
+      "reviews": 24,
       "name": "poutine",
       "cuisine": "canadian",
       "category": "pork",
@@ -19,8 +19,8 @@
     },
     {
       "id": 2,
-      "rating": 138,
-      "reviews": 31,
+      "rating": 178,
+      "reviews": 39,
       "name": "kebap",
       "cuisine": "turkish",
       "category": "mutton",
@@ -38,8 +38,8 @@
     },
     {
       "id": 3,
-      "rating": 55,
-      "reviews": 12,
+      "rating": 56,
+      "reviews": 13,
       "name": "tteokbokki",
       "cuisine": "korean",
       "category": "vegan",

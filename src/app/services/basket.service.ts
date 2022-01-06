@@ -40,11 +40,20 @@ export class BasketService {
   getBasketItems(): Map<Dish, number> {
     return this.basketItems
   }
-  getCurrency(): string {
-    return this.currency
+
+  getPortions(): number {
+    let portions = 0
+    for(let [key, value] of this.basketItems.entries()) {
+      portions += value
+    }
+    return portions
   }
 
-  setCurrency(currency: string) {
-    this.currency = currency
+  getPrice(): number {
+    let price = 0
+    for(let [key, value] of this.basketItems.entries()) {
+      price += value * key.price
+    }
+    return Math.round(price * 100)/100
   }
 }

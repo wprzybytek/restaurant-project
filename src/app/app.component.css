@@ -1,5 +1,7 @@
 .body{
   width: 100vw;
+  display: flex;
+  flex-direction: column;
   font-family: "Arial Rounded MT Bold", sans-serif;
 }
 
@@ -18,7 +20,7 @@ header {
   justify-content: flex-start;
   align-items: center;
   color: white;
-  gap: 1rem;
+  gap: 10px;
 }
 
 .logo {
