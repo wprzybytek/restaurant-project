@@ -1,0 +1,15 @@
+<div class="reviews-container">
+  <h1>Customer reviews</h1>
+  <div class="review"
+       *ngFor="let review of this.reviewService.getReviews(this.dish)">
+    <div class="review-top">
+      <h2>{{review.title}}</h2>
+      <p *ngIf="review.date">{{review.date | date}}</p>
+    </div>
+    <p>Added by: {{review.nick}}</p>
+    <p>{{review.body}}</p>
+  </div>
+
+  <h1>Add review</h1>
+  <app-add-review (onSubmit)="addReview($event)"></app-add-review>
+</div>

@@ -4,12 +4,14 @@ import {MainComponent} from "./components/main/main.component";
 import {DishesComponent} from "./components/dishes/dishes.component";
 import {BasketComponent} from "./components/basket/basket.component";
 import {AddDishComponent} from "./components/add-dish/add-dish.component";
+import {DishViewComponent} from "./components/dish-view/dish-view.component";
 
 const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'menu', component: DishesComponent},
   {path: 'add', component: AddDishComponent},
   {path: 'cart', component: BasketComponent},
+  {path: 'menu/:id', component: DishViewComponent},
   {path: '', redirectTo: '/main', pathMatch: 'full'}
 ];
 

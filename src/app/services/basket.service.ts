@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Dish} from "../dish";
-import {DishService} from "./dish.service";
 
 @Injectable({
   providedIn: 'root'

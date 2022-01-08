@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+
 import { AppComponent } from './app.component';
 import { DishesComponent } from './components/dishes/dishes.component';
 import { AddDishComponent } from './components/add-dish/add-dish.component';
@@ -13,6 +16,9 @@ import { FilterComponent } from './components/filter/filter.component';
 import { UniquePipe } from './pipes/unique.pipe';
 import { BasketComponent } from './components/basket/basket.component';
 import { MainComponent } from './components/main/main.component';
+import { DishViewComponent } from './components/dish-view/dish-view.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +31,18 @@ import { MainComponent } from './components/main/main.component';
     UniquePipe,
     BasketComponent,
     MainComponent,
+    DishViewComponent,
+    ReviewsComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

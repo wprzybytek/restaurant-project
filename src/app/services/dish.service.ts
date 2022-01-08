@@ -1,48 +1,56 @@
-import {EventEmitter, Injectable, Output} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Dish} from "../dish";
-import {Observable, of, tap} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable, of} from "rxjs";
 import {CurrencyService} from "./currency.service";
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-}
+import {AngularFireDatabase} from "@angular/fire/compat/database";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
-  private url = 'http://localhost:3000/dishes'
   dishes!: Dish[]
   dishesCopy!: Dish[]
 
-  constructor(private httpClient: HttpClient, public currencyService: CurrencyService) {
+  constructor(public currencyService: CurrencyService,
+              private db: AngularFireDatabase) {
   }
 
   getDishes(): Observable<Dish[]> {
-    if(this.dishes) {return of(this.dishes)}
-    return this.httpClient.get<Dish[]>(this.url).pipe(tap(this.dishes))
+    if(!this.dishes) {
+      this.db.list('dishes').valueChanges().subscribe(data => {
+        this.dishes = (data as Dish[])
+      })
+    }
+    return of(this.dishes)
   }
 
   getDishesCopy(): Observable<Dish[]> {
-    if(this.dishesCopy) {return of(this.dishesCopy)}
-    return this.httpClient.get<Dish[]>(this.url).pipe(tap(this.dishesCopy))
+    if(!this.dishesCopy) {
+      this.db.list('dishes').valueChanges().subscribe(data => {
+        this.dishesCopy = (data as Dish[])
+      })
+    }
+    return of(this.dishesCopy)
+  }
+
+  getDishById(id: string | null, copy: boolean): Dish {
+    if(!copy) return this.dishes.filter(dish => dish.id == Number(id))[0]
+    return this.dishesCopy.filter(dish => dish.id == Number(id))[0]
   }
 
   deleteDish(dish: Dish): void {
-    const dishUrl = `${this.url}/${dish.id}`
-    this.httpClient.delete<Dish>(dishUrl).subscribe(() => this.dishes = this.dishes.filter(entry => entry.id != dish.id))
+    this.db.list('dishes').remove(`${dish.id}`).then(() => {
+      this.dishes = this.dishes.filter(entry => entry.id != dish.id)
+      this.dishesCopy = this.dishesCopy.filter(entry => entry.id != dish.id)
+    })
   }
 
-  addDish(dish: Dish): Observable<Dish> {
-    return this.httpClient.post<Dish>(this.url, dish, httpOptions)
+  addDish(dish: Dish): void {
+    this.db.list('dishes').set(`${this.dishes.length}`, dish).then()
   }
 
   setRating(dish: Dish): void {
-    const dishUrl = `${this.url}/${dish.id}`
-    this.httpClient.put<Dish>(dishUrl, dish, httpOptions).subscribe()
+    this.db.list('dishes').set(`${dish.id}`, dish).then()
   }
 
   changeCurrency(): void {

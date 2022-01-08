@@ -2,8 +2,8 @@
   "dishes": [
     {
       "id": 1,
-      "rating": 116,
-      "reviews": 24,
+      "rating": 157,
+      "reviews": 33,
       "name": "poutine",
       "cuisine": "canadian",
       "category": "pork",

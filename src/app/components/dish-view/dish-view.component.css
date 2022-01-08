@@ -1,0 +1,91 @@
+.view-container {
+  width: 100vw;
+  min-height: 80vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-back {
+  width: 10rem;
+  height: 2rem;
+  border: none;
+  background-color: #009dff;
+  color: white;
+}
+
+.view-photo-select {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-change-img {
+  font-size: 3rem;
+  color: #009dff;
+  cursor: pointer;
+}
+
+.view-img {
+  width: 30rem;
+  border-radius: 10px;
+  border: 5px solid #009dff;
+  padding: 1rem;
+}
+
+.view-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 30rem;
+}
+
+.view-name {
+  text-transform: capitalize;
+}
+
+.view-desc {
+  color: dimgrey;
+}
+
+.view-rating {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.view-portions {
+  width: 30rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.view-buttons {
+  width: 30rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.view-buttons button {
+  border: none;
+  color: white;
+  width: 5rem;
+  height: 3vh;
+}
+.view-buttons button:disabled {
+  background-color: grey;
+}
+.add {
+  background-color: green;
+}
+.remove {
+  background-color: red;
+}
+app-reviews {
+  width: 30rem;
+}

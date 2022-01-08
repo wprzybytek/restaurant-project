@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {Dish} from "../../dish";
 import {DishService} from "../../services/dish.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-dish',
@@ -22,56 +23,113 @@ export class AddDishComponent implements OnInit {
     this.dishService.dishesCopy = dishes
   }
 
-  name!: string
-  cuisine!: string
-  category!: string
-  products!: string
-  quantity!: string
-  price!: string
-  description!: string
-  images!: string
+  modelForm!: FormGroup
 
-  constructor(private dishService: DishService) { }
+  formErrors = {
+    name: '',
+    cuisine: '',
+    category: '',
+    products: '',
+    quantity: '',
+    price: '',
+    description: '',
+    images: ''
+  }
+
+  private validationMessages = {
+    name: {
+      required: 'Name is required'
+    },
+    cuisine: {
+      required: 'Cuisine is required'
+    },
+    category: {
+      required: 'Category is required'
+    },
+    products: {
+      required: 'Products are required'
+    },
+    quantity: {
+      required: 'Quantity is required',
+      min: 'Quantity must be a number greater than 0',
+      pattern: 'Quantity must be a number'
+    },
+    price: {
+      required: 'Price is required',
+      min: 'Price must be a number greater than 0',
+      pattern: 'Price must be a number'
+    },
+    description: {
+      required: 'Description is required'
+    },
+    images: {
+      required: 'Images path is required'
+    }
+  }
+
+  constructor(private dishService: DishService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.modelForm = this.fb.group({
+      name: ['', Validators.required],
+      cuisine: ['', Validators.required],
+      category: ['', Validators.required],
+      products: ['', Validators.required],
+      quantity: ['', [Validators.required, Validators.min(1), Validators.pattern(new RegExp('^[0-9]+$'))]],
+      price: ['', [Validators.required, Validators.min(1), Validators.pattern(new RegExp('^[0-9]+$'))]],
+      description: ['', Validators.required],
+      images: ['', Validators.required]
+    })
   }
 
   onSubmit() {
-    if (!this.name || !this.cuisine || !this.category || !this.products || !this.quantity || !this.price || !this.description || !this.images) {
-      alert("Enter missing inputs!")
-      return;
+    this.formErrors = {
+      name: '',
+      cuisine: '',
+      category: '',
+      products: '',
+      quantity: '',
+      price: '',
+      description: '',
+      images: ''
     }
 
-    let newDish: Dish
-    try {
+    if(this.modelForm.valid) {
+      let newDish: Dish
       newDish = {
-        name: this.name,
-        cuisine: this.cuisine,
-        category: this.category,
-        products: this.products.split(', '),
-        quantity: Number(this.quantity),
-        price: Number(this.price),
-        description: this.description,
-        images: this.images,
+        id: this.dishList.length,
+        name: this.modelForm.get('name')?.value,
+        cuisine: this.modelForm.get('cuisine')?.value,
+        category: this.modelForm.get('category')?.value,
+        products: this.modelForm.get('products')?.value.split(', '),
+        quantity: this.modelForm.get('quantity')?.value,
+        price: this.modelForm.get('price')?.value,
+        description: this.modelForm.get('description')?.value,
+        images: this.modelForm.get('images')?.value,
         rating: 0,
         reviews: 0
       }
-      this.dishService.addDish(newDish).subscribe(dish => {
-        this.dishList.push(dish)
-        this.dishListCopy.push(dish)
-      })
+      this.dishService.addDish(newDish)
+      this.dishList.push(newDish)
+      this.dishListCopy.push(newDish)
+      this.modelForm.reset()
     }
-    catch (error) {
-      alert("Wrong data format!")
+    else {
+      let form = this.modelForm
+      for(let field in this.formErrors) {
+        let control = form.get(field)
+
+        if(control) {
+          //@ts-ignore
+          let validationMessages = this.validationMessages[field]
+          for(let error in control?.errors) {
+            //@ts-ignore
+            this.formErrors[field] += validationMessages[error] + ' '
+          }
+        }
+      }
     }
 
-    this.name = ''
-    this.cuisine = ''
-    this.category = ''
-    this.products = ''
-    this.quantity = ''
-    this.price = ''
-    this.description = ''
-    this.images! = ''
   }
 }

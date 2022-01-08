@@ -1,4 +1,4 @@
-import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Dish} from "src/app/dish"
 import {DishService} from "../../services/dish.service";
 import {CurrencyService} from "../../services/currency.service";
@@ -25,7 +25,11 @@ export class DishesComponent implements OnInit {
   }
 
   currency: string = "€"
-  filterValues: any = [[], [], 0, []]
+  filterValues: any = [[], [], [], []]
+  pageNumber: number = 0
+  numberOfPages: number = 10
+  dishesPerPage: number = 8
+
 
   constructor(private dishService: DishService, public currencyService: CurrencyService, public basketService: BasketService) {
   }
@@ -66,14 +70,16 @@ export class DishesComponent implements OnInit {
     this.currency = this.currencyService.getCurrency()
   }
 
-  addToBasket(dish: Dish): void {
+  addToBasket(dish: Dish, event: Event): void {
     this.dishService.removeOne(dish)
     this.basketService.addToBasket(dish)
+    event.stopPropagation()
   }
 
-  removeFromBasket(dish: Dish): void {
+  removeFromBasket(dish: Dish, event: Event): void {
     this.dishService.addOne(dish)
     this.basketService.removeFromBasket(dish)
+    event.stopPropagation()
   }
 
   hideRemoveButton(dish: Dish): boolean {
@@ -86,15 +92,31 @@ export class DishesComponent implements OnInit {
     return dish.quantity == 0
   }
 
-  deleteDish(dish: Dish) {
+  deleteDish(dish: Dish, event: Event) {
     this.dishService.deleteDish(dish)
-  }
-
-  setRating(dish: Dish) {
-    this.dishService.setRating(dish)
+    event.stopPropagation()
+    this.basketService.removeAll(dish)
   }
 
   setFilters(values: any) {
     this.filterValues = values
+  }
+
+  isOnActPage(index: number, dishes: Dish[]) {
+    this.numberOfPages = Math.floor(dishes.length/this.dishesPerPage)
+    return Math.floor(index / this.dishesPerPage) == this.pageNumber
+  }
+
+  setDishesPerPage(quantity: number) {
+    this.dishesPerPage = quantity
+    this.pageNumber = 0
+  }
+
+  pageLeft() {
+    this.pageNumber -= 1
+  }
+
+  pageRight() {
+    this.pageNumber += 1
   }
 }

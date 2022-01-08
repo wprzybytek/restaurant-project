@@ -1,0 +1,32 @@
+<div class="view-container">
+  <button class="view-back" routerLink="/menu"><- Go back</button>
+  <div class="view-photo-select">
+    <p class="view-change-img" (click)="changePhoto(-1)"><</p>
+    <img class="view-img" src="{{this.dishPhotos[activePath]}}" alt="main picture">
+    <p class="view-change-img" (click)="changePhoto(1)">></p>
+  </div>
+  <div class="view-info">
+    <h1 class="view-name">{{dish.name}}</h1>
+    <p class="view-desc">{{dish.category}}</p>
+    <p class="view-desc">{{dish.cuisine}}</p>
+    <p class="view-desc">{{toString(dish.products)}}</p>
+    <p class="view-desc">{{dish.description}}</p>
+  </div>
+  <div class="view-rating">
+    <p [style.color]="(dish.rating>=3)? 'green' : 'red'">Rating: {{getRating()}}</p>
+    <app-rating [dish]="dish" (onRated)="setRating()"></app-rating>
+  </div>
+  <div class="view-portions">
+    <p class="view-quantity" [style.color]="(dish.quantity <= 3)? 'red' : 'black'">
+      Available: {{dish.quantity}}
+    </p>
+    <p class="view-price">
+      Price: {{dish.price}}{{currency}}
+    </p>
+  </div>
+  <div class="view-buttons">
+    <button class="add" (click)="addToBasket(dish)" [disabled]="this.dish.quantity==0">+</button>
+    <button class="remove" (click)="removeFromBasket(dish)" [disabled]="this.dish.quantity==this.dishCopy.quantity">-</button>
+  </div>
+  <app-reviews [dish]="dish"></app-reviews>
+</div>

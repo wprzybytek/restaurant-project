@@ -1,0 +1,24 @@
+.reviews-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem
+}
+
+.review {
+  width: 100%;
+  border: 5px solid #009dff;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+app-add-review {
+  width: 100%;
+}

@@ -1,37 +1,45 @@
 <div class="form-container">
-<form class="dish-form" (ngSubmit)="onSubmit()">
+<form class="dish-form" (ngSubmit)="onSubmit()" [formGroup]="modelForm">
   <h1 class="form-title">Add dish</h1>
   <div class="form-field">
     <label for="name">Dish Name</label>
-    <input type="text" name="name" [(ngModel)]="name" id="name">
+    <input type="text" name="name" formControlName="name" id="name">
+    <span *ngIf="formErrors.name">{{ formErrors.name }}</span>
   </div>
   <div class="form-field">
     <label for="cuisine">Cuisine</label>
-    <input type="text" name="cuisine" [(ngModel)]="cuisine" id="cuisine">
+    <input type="text" name="cuisine" formControlName="cuisine" id="cuisine">
+    <span *ngIf="formErrors.cuisine">{{ formErrors.cuisine }}</span>
   </div>
   <div class="form-field">
     <label for="category">Category</label>
-    <input type="text" name="category" [(ngModel)]="category" id="category">
+    <input type="text" name="category" formControlName="category" id="category">
+    <span *ngIf="formErrors.category">{{ formErrors.category }}</span>
   </div>
   <div class="form-field">
     <label for="products">Ingredients</label>
-    <input type="text" name="products" [(ngModel)]="products" id="products">
+    <input type="text" name="products" formControlName="products" id="products">
+    <span *ngIf="formErrors.products">{{ formErrors.products }}</span>
   </div>
   <div class="form-field">
     <label for="quantity">Quantity</label>
-    <input type="text" name="quantity" [(ngModel)]="quantity" id="quantity">
+    <input type="text" name="quantity" formControlName="quantity" id="quantity">
+    <span *ngIf="formErrors.quantity">{{ formErrors.quantity }}</span>
   </div>
   <div class="form-field">
     <label for="price">Price in €</label>
-    <input type="text" name="price" [(ngModel)]="price" id="price">
+    <input type="text" name="price" formControlName="price" id="price">
+    <span *ngIf="formErrors.price">{{ formErrors.price }}</span>
   </div>
   <div class="form-field">
     <label for="description">Description</label>
-    <input type="text" name="description" [(ngModel)]="description" id="description">
+    <input type="text" name="description" formControlName="description" id="description">
+    <span *ngIf="formErrors.description">{{ formErrors.description }}</span>
   </div>
   <div class="form-field">
     <label for="images">Path to images</label>
-    <input type="text" name="images" [(ngModel)]="images" id="images">
+    <input type="text" name="images" formControlName="images" id="images">
+    <span *ngIf="formErrors.images">{{ formErrors.images }}</span>
   </div>
   <input type="submit" value="Add Dish" class="add-dish-btn">
 </form>
