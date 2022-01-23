@@ -27,7 +27,7 @@ header {
   height: 8vh;
 }
 
-.nav {
+.show-nav, .hide-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -35,7 +35,7 @@ header {
   gap: 5vw;
 }
 
-.nav a {
+.show-nav a, .hide-nav a {
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -44,8 +44,15 @@ header {
   transition: transform 500ms;
 }
 
-.nav a:hover {
+.show-nav p, .hide-nav p {
+  color: white;
+}
+
+.show-nav a:hover, .hide-nav a:hover {
   transform: scale(1.5, 1.5);
+}
+.menu-button {
+  display: none;
 }
 
 .active {
@@ -62,4 +69,28 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .menu-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    color: white;
+    border: none;
+    background-color: #0071b6;
+    display: unset;
+  }
+
+  .show-nav {
+    flex-direction: column;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    background-color: #009dff;
+    padding: 1rem;
+  }
+  .hide-nav {
+    display: none;
+  }
 }

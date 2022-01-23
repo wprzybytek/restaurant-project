@@ -19,6 +19,8 @@ import { MainComponent } from './components/main/main.component';
 import { DishViewComponent } from './components/dish-view/dish-view.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AddReviewComponent } from './components/add-review/add-review.component
     MainComponent,
     DishViewComponent,
     ReviewsComponent,
-    AddReviewComponent
+    AddReviewComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

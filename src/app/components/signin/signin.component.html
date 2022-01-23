@@ -1,0 +1,16 @@
+<div class="signin">
+  <form [formGroup]="modelForm" (submit)="submit()">
+    <h1 [style.align-self]="'center'">Login to your account</h1>
+    <div class="input-field">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" formControlName="email">
+      <span *ngIf="formErrors.email">{{ formErrors.email }}</span>
+    </div>
+    <div class="input-field">
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" formControlName="password">
+      <span *ngIf="formErrors.password">{{ formErrors.password }}</span>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>

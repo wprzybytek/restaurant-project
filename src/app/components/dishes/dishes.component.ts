@@ -3,6 +3,7 @@ import {Dish} from "src/app/dish"
 import {DishService} from "../../services/dish.service";
 import {CurrencyService} from "../../services/currency.service";
 import {BasketService} from "../../services/basket.service";
+import {FirebaseService} from "../../services/firebase.service";
 
 @Component({
   selector: 'app-dishes',
@@ -31,7 +32,7 @@ export class DishesComponent implements OnInit {
   dishesPerPage: number = 8
 
 
-  constructor(private dishService: DishService, public currencyService: CurrencyService, public basketService: BasketService) {
+  constructor(private dishService: DishService, public currencyService: CurrencyService, public basketService: BasketService, public firebaseService: FirebaseService) {
   }
 
   ngOnInit(): void {

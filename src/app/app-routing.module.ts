@@ -5,13 +5,18 @@ import {DishesComponent} from "./components/dishes/dishes.component";
 import {BasketComponent} from "./components/basket/basket.component";
 import {AddDishComponent} from "./components/add-dish/add-dish.component";
 import {DishViewComponent} from "./components/dish-view/dish-view.component";
+import {SignupComponent} from "./components/signup/signup.component";
+import {SigninComponent} from "./components/signin/signin.component";
+import {AuthGuard} from "./guard/auth.guard";
 
 const routes: Routes = [
   {path: 'main', component: MainComponent},
   {path: 'menu', component: DishesComponent},
-  {path: 'add', component: AddDishComponent},
-  {path: 'cart', component: BasketComponent},
-  {path: 'menu/:id', component: DishViewComponent},
+  {path: 'add', component: AddDishComponent, canActivate: [AuthGuard]},
+  {path: 'cart', component: BasketComponent, canActivate: [AuthGuard]},
+  {path: 'menu/:id', component: DishViewComponent, canActivate: [AuthGuard]},
+  {path: 'signup', component: SignupComponent},
+  {path: 'signin', component: SigninComponent},
   {path: '', redirectTo: '/main', pathMatch: 'full'}
 ];
 

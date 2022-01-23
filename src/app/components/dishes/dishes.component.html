@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="basket" [style.background-color]="(this.basketService.getPortions() > 10)? '#009dff' : 'orange'">
+  <div *ngIf="this.firebaseService.isLoggedIn" class="basket" [style.background-color]="(this.basketService.getPortions() > 10)? '#009dff' : 'orange'">
     <p>Portions: {{this.basketService.getPortions()}}</p>
     <p>Price: {{this.basketService.getPrice()}}{{this.currencyService.getCurrency()}}</p>
     <button (click)="changeCurrency()" class="currency-button">Currency: {{currency}}</button>
@@ -39,7 +39,7 @@
          [style.border-color]="(dish.price == getMaxPrice())? 'red' : (dish.price == getMinPrice())? 'green' : '#009dff'"
          id="{{(dish.name).split(' ').join('-')}}"
          [routerLink]="['/menu', dish.id]">
-      <button class="delete" (click)="deleteDish(dish, $event)">x</button>
+      <button *ngIf="this.firebaseService.isLoggedIn" class="delete" (click)="deleteDish(dish, $event)">x</button>
       <img class="dish-img" src="{{dish.images}}/main.jpg" alt="{{dish.name}}">
       <p class="dish-name">{{ dish.name | uppercase }}</p>
       <p class="dish-cuisine">{{dish.cuisine | uppercase}}</p>
@@ -51,7 +51,7 @@
           Price: {{dish.price}}{{currency}}
         </p>
       </div>
-      <div class="dish-buttons">
+      <div *ngIf="this.firebaseService.isLoggedIn" class="dish-buttons">
         <button class="add" (click)="addToBasket(dish, $event)" [disabled]="hideAddButton(dish)">+</button>
         <button class="remove" (click)="removeFromBasket(dish, $event)" [disabled]="hideRemoveButton(dish)">-</button>
       </div>

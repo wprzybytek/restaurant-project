@@ -6,11 +6,16 @@
         Every Corner Kitchen
       </h1>
     </div>
-    <div class="nav">
+    <button (click)="onShowNav()" class="menu-button">v</button>
+    <div [ngClass]="this.nav">
       <a routerLink="/main" routerLinkActive="active">Home</a>
       <a routerLink="/menu" routerLinkActive="active">Menu</a>
-      <a routerLink="/add" routerLinkActive="active">Add Dish</a>
-      <a routerLink="/cart" routerLinkActive="active">Cart</a>
+      <a *ngIf="this.firebaseService.isLoggedIn" routerLink="/add" routerLinkActive="active">Add Dish</a>
+      <a *ngIf="this.firebaseService.isLoggedIn" routerLink="/cart" routerLinkActive="active">Cart</a>
+      <a *ngIf="!this.firebaseService.isLoggedIn" routerLink="/signin" routerLinkActive="active">Login</a>
+      <a *ngIf="!this.firebaseService.isLoggedIn" routerLink="/signup" routerLinkActive="active">Register</a>
+      <p *ngIf="this.firebaseService.userData | async as user">{{user.email}}</p>
+      <a *ngIf="this.firebaseService.isLoggedIn" href="#" (click)="firebaseService.logout()">Logout</a>
     </div>
   </header>
 
